@@ -253,7 +253,7 @@ button {
 
 .bg_2 {
   max-width: 460px;
-  background: url("../img/header/bgbottom.png") top/cover no-repeat;
+  background: url("../img/header/bgbottom.png") top/100% no-repeat;
   height: 100%;
   margin-right: -48px;
   margin-left: -90px;
@@ -442,6 +442,8 @@ button {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 40%;
           flex: 0 1 40%;
+  padding-right: 10%;
+  padding-bottom: 10%;
 }
 
 .content-header__title {
