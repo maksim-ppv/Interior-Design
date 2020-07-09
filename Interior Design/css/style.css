@@ -242,7 +242,7 @@ button {
 }
 
 .bg_1 {
-  background: url("../img/header/bgtop.png") top/cover no-repeat;
+  background: url("../img/header/bgtop.png") top/100% 100% no-repeat;
   max-width: 286px;
   padding: 65px 0px 30px 25px;
 }
@@ -253,7 +253,7 @@ button {
 
 .bg_2 {
   max-width: 460px;
-  background: url("../img/header/bgbottom.png") top/100% no-repeat;
+  background: url("../img/header/bgbottom.png") top/100% 100% no-repeat;
   height: 100%;
   margin-right: -48px;
   margin-left: -90px;
