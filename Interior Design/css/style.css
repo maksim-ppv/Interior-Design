@@ -245,6 +245,7 @@ button {
   background: url("../img/header/bgtop.png") top/100% 100% no-repeat;
   max-width: 286px;
   padding: 65px 0px 30px 25px;
+  margin-left: 4px;
 }
 
 .bg_1 span {
