@@ -1518,8 +1518,3 @@ button {
 
   .webp .header { background: url(../img/header/bg.webp) center/cover no-repeat; }
 }
-
-@media (max-width: 700.98px) {
-
-  .webp .why-project { background: url(../img/why-project/bg576.webp) bottom/cover no-repeat; }
-}
