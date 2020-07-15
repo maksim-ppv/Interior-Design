@@ -5150,7 +5150,21 @@ btnDesignTrack.addEventListener('click', () => {
 })
 
 
+//====================================================================================================================================
 
+// tabs
+$(document).ready(function() {
+    $(".controls-steps-top__ul").on('click', 'li', function() {
+      $(".main-content-steps-top__body").removeClass("show");
+  
+      var newImage = $(this).index();
+  
+      $(".main-content-steps-top__body").eq(newImage).addClass("show");
+  
+      $(".controls-steps-top__li").removeClass("controls-steps-top__li_active");
+      $(this).addClass("controls-steps-top__li_active");
+    });
+  });
 
 ;
 //MASKS//
@@ -5247,10 +5261,13 @@ function ibg(){
 
 
 // Scrollsmooth
-var Scrollbar = window.Scrollbar;
 
-  Scrollbar.init(document.querySelector('#my-scrollbar'), {
-	  alwaysShowTracks:true});;
+var Scrollbar = window.Scrollbar;
+	const scrollbar = document.querySelectorAll('.my-scrollbar');
+	scrollbar.forEach(item=>{
+		Scrollbar.init(item, {
+			alwaysShowTracks:true});
+	});
 
 
 
