@@ -5023,8 +5023,8 @@ document.addEventListener('keydown', function (e) {
 
 var isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 
-const popupFormname = document.querySelector('.popup__form-name');
-const popupThanksTitle = document.querySelector('.popup-thanks__title');
+const popupFormname = document.querySelectorAll('.popup__form-name');
+const popupThanksTitle = document.querySelectorAll('.popup-thanks__title');
 
 
 
@@ -5083,14 +5083,27 @@ function formValidate(input){
 
 function showMessageByClass(ms){
 
-    if(popupFormname.value == ''){
-	const name = `Спасибо!`;
-	popupThanksTitle.textContent = name;
-	}
-	if(!popupFormname.value == ''){
-	const name = `Спасибо, ${popupFormname.value}!`;
-	popupThanksTitle.textContent = name;
-	}
+			const popupMassive = [...popupFormname];
+			const resultInput = popupMassive.filter(item=> {
+				return item.value !== ''
+			});
+			popupFormname.forEach(item=>{
+				const name = `Спасибо!`;
+				popupThanksTitle.forEach(item=>{
+					item.textContent = name;
+					console.log('tttu: ', item.value);
+				})
+				console.log('item: ', item.value);
+			})
+			resultInput.forEach(item=>{
+				const name = `Спасибо, ${item.value}!`;
+				popupThanksTitle.forEach(item=>{
+					item.textContent = name;
+				})
+			})
+			popupFormname.forEach(item=>{
+				item.value = '';
+			})
 	const msPopup = document.getElementById(ms);
 	popupOpen(msPopup);
 }
@@ -5155,11 +5168,11 @@ btnDesignTrack.addEventListener('click', () => {
 // tabs
 $(document).ready(function() {
     $(".controls-steps-top__ul").on('click', 'li', function() {
-      $(".main-content-steps-top__body").removeClass("show");
+      $(".main-content-steps-top__bg").removeClass("show");
   
       var newImage = $(this).index();
   
-      $(".main-content-steps-top__body").eq(newImage).addClass("show");
+      $(".main-content-steps-top__bg").eq(newImage).addClass("show");
   
       $(".controls-steps-top__li").removeClass("controls-steps-top__li_active");
       $(this).addClass("controls-steps-top__li_active");
