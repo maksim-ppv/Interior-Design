@@ -5191,20 +5191,24 @@ $(document).ready(function() {
     });
 
     $(".controls-price__panel").on('click', 'span', function() {
-        $(".price-content").removeClass("show");
+        $(".price-content").removeClass("show_rel");
     
         var newImage = $(this).index();
     
-        $(".price-content").eq(newImage).addClass("show");
+        $(".price-content").eq(newImage).addClass("show_rel");
     
         $(".controls-price__link").removeClass("controls-price__link_active");
         $(this).addClass("controls-price__link_active");
       });
 // spoiler 
-    $('.service-price__top').click(function(event){
+    $('.spoiler').click(function(event){
         $(this).toggleClass('spoiler_active').next().slideToggle(300);
     });
-
+        $('.spoiler_small').click(function(event){
+            if(window.matchMedia('(max-width: 576px)').matches){
+            $(this).toggleClass('spoiler_active').next().slideToggle(300);
+        }
+        });
   });
 
 
@@ -5224,6 +5228,71 @@ stepsMiddleInfo1.addEventListener('mouseout', Close);
 stepsMiddleInfo1.addEventListener('mouseover', open);
 
 //====================================================================================================================================
+
+// tabs questions-presents 
+
+
+const presentItemRightBody = document.querySelectorAll('.present-item-right__body');
+const presentItemLeftContent = document.querySelectorAll('.present-item-left__content');
+const presentItemLefTLi = document.querySelectorAll('.present-item-left__li');
+const presentItemLeftNumber = document.querySelector('.present-item-left__number-question');
+const PresentButtonPrev = document.querySelector('.present-item-left_button_prev');
+const PresentButtonNext = document.querySelector('.present-item-left_button_next');
+
+let number = 0;
+const PresentSliderPrev = (number) => {
+    if(number <= 1){
+        PresentButtonPrev.classList.remove('show')
+    };
+    presentItemLefTLi.forEach((item,index)=>{
+        if(index == number){
+            item.classList.remove('present-item-left__li_active');
+        }
+    });
+};
+
+const PresentSliderNext = (number) => {
+    if(number >= 1){
+        PresentButtonPrev.classList.add('show')
+    };
+    presentItemLefTLi.forEach((item,index)=>{
+        if(index == number){
+            item.classList.add('present-item-left__li_active')
+        }
+    })
+};
+
+const PresentSliderActive = (number) => {
+    presentItemRightBody.forEach((item,index)=>{
+        item.classList.remove('show_rel');
+        if(index == number){
+            item.classList.add('show_rel');
+        }
+    });
+    presentItemLeftContent.forEach((item,index)=>{
+        item.classList.remove('show_rel');
+        if(index == number){
+            item.classList.add('show_rel');
+        }
+    });
+    presentItemLeftNumber.textContent = `вопрос ${++number} из 6`
+    number--
+}
+
+
+
+PresentButtonPrev.addEventListener('click', ()=>{
+    PresentSliderPrev(number);
+    number--;
+    PresentSliderActive(number);
+});
+
+
+PresentButtonNext.addEventListener('click', ()=>{
+    number++;
+    PresentSliderNext(number);
+    PresentSliderActive(number);
+});
 
 ;
 ! function (t) {
