@@ -5129,19 +5129,61 @@ if(n.val()==""){
 }
 
 	//RANGE
-	if($("#range" ).length>0){
-		$("#range" ).slider({
-			range: "min",
-			min: 0,
-			max: 3000,
-			value: 500,
-			slide: function( event, ui ){
-				$('#rangeto').val(ui.value);
-			}
-		});
-		$('#rangeto').val($( "#range" ).slider( "value"));
-
-	};
+	const range = document.querySelectorAll('.range');
+	const range2 = document.querySelectorAll('.range_2');
+	const range3 = document.querySelectorAll('.range_3');
+	
+	range.forEach(item=>{
+		const rangeto = item.querySelector('.rangeto');
+		const rangeControl = item.querySelector('.range_control');
+		if($(rangeControl).length>0){
+			$(rangeControl).slider({
+				range: "min",
+				min: 0,
+				max: 3000,
+				value: 500,
+				slide: function( event, ui ){
+					$(rangeto).val(ui.value);
+				}
+			});
+			$(rangeto).val($(rangeControl).slider( "value"));
+	
+		}
+	});
+	range2.forEach(item=>{
+		const rangeto = item.querySelector('.rangeto');
+		const rangeControl = item.querySelector('.range_control');
+		if($(rangeControl).length>0){
+			$(rangeControl).slider({
+				range: "min",
+				min: 0,
+				max: 300,
+				value: 43,
+				slide: function( event, ui ){
+					$(rangeto).val(ui.value);
+				}
+			});
+			$(rangeto).val($(rangeControl).slider( "value"));
+	
+		}
+	});
+	range3.forEach(item=>{
+		const rangeto = item.querySelector('.rangeto');
+		const rangeControl = item.querySelector('.range_control');
+		if($(rangeControl).length>0){
+			$(rangeControl).slider({
+				range: "min",
+				min: 0,
+				max: 25,
+				value: 4,
+				slide: function( event, ui ){
+					$(rangeto).val(ui.value);
+				}
+			});
+			$(rangeto).val($(rangeControl).slider( "value"));
+	
+		}
+	});
 
 //====================================================================================================================================
 
@@ -5211,6 +5253,23 @@ $(document).ready(function() {
         });
   });
 
+// selects 
+
+const ItemSelect = document.querySelectorAll('.content-present-item-4__select');
+
+ItemSelect.forEach(item=>{
+    const ItemSelectTitle = item.querySelector('.content-present-item-4__select-title');
+    const selectItem = item.querySelectorAll('.select-item');
+    selectItem.forEach(itemSelect=>{
+        console.log('itemdsadasSelect.value: ', itemSelect);
+
+        itemSelect.addEventListener('click',()=>{
+            ItemSelectTitle.textContent = itemSelect.textContent
+            console.log('itemSelect.value: ', itemSelect.value);
+            $(ItemSelectTitle).toggleClass('spoiler_active').next().slideToggle(300);
+        })
+    })
+})
 
 
 //====================================================================================================================================
@@ -5230,8 +5289,6 @@ stepsMiddleInfo1.addEventListener('mouseover', open);
 //====================================================================================================================================
 
 // tabs questions-presents 
-
-
 const presentItemRightBody = document.querySelectorAll('.present-item-right__body');
 const presentItemLeftContent = document.querySelectorAll('.present-item-left__content');
 const presentItemLefTLi = document.querySelectorAll('.present-item-left__li');
@@ -5240,6 +5297,7 @@ const PresentButtonPrev = document.querySelector('.present-item-left_button_prev
 const PresentButtonNext = document.querySelector('.present-item-left_button_next');
 
 let number = 0;
+const MaxNumber = presentItemLeftContent.length
 const PresentSliderPrev = (number) => {
     if(number <= 1){
         PresentButtonPrev.classList.remove('show')
@@ -5263,25 +5321,29 @@ const PresentSliderNext = (number) => {
 };
 
 const PresentSliderActive = (number) => {
-    presentItemRightBody.forEach((item,index)=>{
-        item.classList.remove('show_rel');
-        if(index == number){
-            item.classList.add('show_rel');
-        }
-    });
-    presentItemLeftContent.forEach((item,index)=>{
-        item.classList.remove('show_rel');
-        if(index == number){
-            item.classList.add('show_rel');
-        }
-    });
+
+    $(".present-item-left__content").hide();
+    $(".present-item-left__content").eq(number).fadeIn(1000);
+    $(".present-item-right__body").hide();
+    $(".present-item-right__body").eq(number).fadeIn({
+        complete: function(){
+          $(this).css("display", "flex");
+        },
+        duration: 1000
+      });
     presentItemLeftNumber.textContent = `вопрос ${++number} из 6`
     number--
 }
 
-
+const SlideEnd = () => {
+    $(".present-start").hide();
+    $(".present-end").fadeIn(1000);
+}
 
 PresentButtonPrev.addEventListener('click', ()=>{
+    if(MaxNumber == number){
+        number--;
+    };
     PresentSliderPrev(number);
     number--;
     PresentSliderActive(number);
@@ -5289,7 +5351,13 @@ PresentButtonPrev.addEventListener('click', ()=>{
 
 
 PresentButtonNext.addEventListener('click', ()=>{
-    number++;
+    if(MaxNumber > number){
+        number++;
+    };
+    if(MaxNumber == number){
+        SlideEnd();
+        return
+    }
     PresentSliderNext(number);
     PresentSliderActive(number);
 });
