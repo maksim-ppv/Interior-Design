@@ -5251,7 +5251,18 @@ $(document).ready(function() {
             $(this).toggleClass('spoiler_active').next().slideToggle(300);
         }
         });
+// accordion
+    $('.accordion__item .accordion-spoiler').click(function(event){
+        if($('.accordion__items').hasClass('accordion')){
+            $('.accordion-spoiler').not($(this)).removeClass('accordion-spoiler_active');
+            $('.accordion-spoiler_bottom').not($(this).next()).slideUp(300);
+        }
+        $(this).toggleClass('accordion-spoiler_active').next().slideToggle(300);
+    });
+
   });
+
+ 
 
 // selects 
 
@@ -7656,7 +7667,7 @@ if($('.step-slider__items').length>0){
 	  });
 	  $('.step-slider__btn-group .slick-arrow').click(function() {
 		$('.step-slider-controls__li').removeClass("step-slider-controls__li_active");
-		var newImage = $('.slick-active').index();
+		var newImage = $('.step-slider__items .slick-active').index();
 	
 		$('.step-slider-controls__li').eq(newImage).addClass("step-slider-controls__li_active");
 	  });
@@ -7666,7 +7677,7 @@ if($('.step-slider__items').length>0){
 if($('.feedback-slider__items').length>0){
 	$('.feedback-slider__items').slick({
 	// autoplay: true,
-	infinite: false,
+	// infinite: false,
 	dots: false,
 	arrows: true,
 	fade: true,
@@ -7676,13 +7687,20 @@ if($('.feedback-slider__items').length>0){
 	speed: 1000,
 	autoplaySpeed: 3000,
 	adaptiveHeight: true,
-	appendArrows:$('.feedback-slider__btn-group'),
+	appendArrows:$('.feedback-slider__btns'),
 	nextArrow:'<button type="button" class="step-slider__next"></button>',
 	prevArrow:'<button type="button" class="step-slider__prev"></button>',
 
 	});
+	const feedbackNumbersFirst = document.querySelector('.feedback-slider__numbers-first');
+	const feedbackNumbersTwo = document.querySelector('.feedback-slider__numbers-two');
+	feedbackNumbersTwo.textContent = $('.feedback-slider__item').length;
 
-	  
+	$('.feedback-slider__btns .slick-arrow').click(function() {
+		var newItem = $('.feedback-slider__items .slick-active').index();
+		console.log('newItem: ', newItem);
+		feedbackNumbersFirst.textContent = ++newItem;
+	  }); 
 };
 
 //wow on
