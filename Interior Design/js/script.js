@@ -5021,7 +5021,7 @@ document.addEventListener('keydown', function (e) {
 
 ;
 
-var isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
+// var isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 
 const popupFormname = document.querySelectorAll('.popup__form-name');
 const popupThanksTitle = document.querySelectorAll('.popup-thanks__title');
@@ -7701,6 +7701,59 @@ if($('.feedback-slider__items').length>0){
 		console.log('newItem: ', newItem);
 		feedbackNumbersFirst.textContent = ++newItem;
 	  }); 
+};
+
+
+if($('.design__items').length>0){
+	$('.design__items').slick({
+	// autoplay: true,
+	// infinite: false,
+	dots: false,
+	arrows: true,
+	fade: true,
+	cssEase: 'linear',
+	accessibility:false,
+	slidesToShow:1,
+	speed: 1000,
+	autoplaySpeed: 3000,
+	adaptiveHeight: true,
+	appendArrows:$('.design__btns'),
+	nextArrow:'<button type="button" class="step-slider__next"></button>',
+	prevArrow:'<button type="button" class="step-slider__prev"></button>',
+
+	});
+	const DesignNumbersFirst = document.querySelector('.design__numbers-first');
+	const DesignNumbersTwo = document.querySelector('.design__numbers-two');
+	const designNumber = document.querySelectorAll('.design__number');
+	const designNumberSpan = document.querySelectorAll('.design__number span');
+	const DesignNumbersTwoSpan = document.querySelector('.design__numbers-two span');
+	if($('.design__item').length >= 10){
+		DesignNumbersTwo.textContent = $('.design__item').length;
+	} else {
+		DesignNumbersTwoSpan.textContent = $('.design__item').length;
+	}
+
+	$('.design__btns .slick-arrow').click(function() {
+		var newItem = $('.design__items .slick-active').index();
+		var ChangeItem = $('.design__items .slick-active').index();
+		console.log('newItem: ', newItem);
+		DesignNumbersFirst.textContent = ++ChangeItem;
+		if($('.design__item').length >= 4){
+			designNumber.forEach((item, i)=>{
+				if(i == newItem){
+					item.textContent = ChangeItem;
+					console.log('newItem++: ', newItem);
+				}
+			})
+		} else {
+			designNumberSpan.forEach((item, i)=>{
+				if(i == newItem){
+					item.textContent = ChangeItem;
+					console.log('newItem++2: ', newItem);
+				}
+		})
+	}
+	}); 
 };
 
 //wow on
