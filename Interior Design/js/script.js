@@ -4894,6 +4894,9 @@ function (a) {
 }));;
 const popupLinks = document.querySelectorAll('.popup-link');
 const body = document.querySelector('body');
+const video = document.querySelectorAll('.video');
+
+console.log('video: ', video);
 const lockPadding = document.querySelectorAll(".lock-padding");
 
 let unlock = true;
@@ -4905,7 +4908,6 @@ if (popupLinks.length > 0) {
         const popupLink = popupLinks[index];
 		popupLink.addEventListener("click", function (e) {
 			const popupName = popupLink.getAttribute('href').replace('#', '');
-			console.log('popupName: ', popupName);
 			const curentPopup = document.getElementById(popupName);
 			popupOpen(curentPopup);
 			e.preventDefault();
@@ -4940,12 +4942,25 @@ function popupOpen(curentPopup) {
 	}
 }
 
+
+const videoClose = () => {
+	const iframe = document.querySelectorAll('.iframe');
+	iframe.forEach(item=>{
+		item.classList.remove('show_rel')
+		item.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+	})
+}
+
 function popupClose(popupActive, doUnlock = true) {
 	if (unlock) {
+		const popupVideo = document.querySelector('#video');
+		if (popupVideo.classList.contains('open')) {
+			videoClose();
+		};
 		popupActive.classList.remove('open');
 		if (doUnlock) {
 			bodyUnLock();
-		}
+		};
 	}
 }
 
@@ -4992,6 +5007,15 @@ document.addEventListener('keydown', function (e) {
 	}
 });
 
+video.forEach((item,i)=>{
+	item.addEventListener('click', event=>{
+		const elem = document.getElementById(i);
+		elem.classList.add('show_rel')
+		elem.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+	});
+});
+
+
 (function () {
 	// проверяем поддержку
 	if (!Element.prototype.closest) {
@@ -5016,8 +5040,6 @@ document.addEventListener('keydown', function (e) {
 			Element.prototype.msMatchesSelector;
 	}
 })();
-
-
 
 ;
 
@@ -7755,6 +7777,34 @@ if($('.design__items').length>0){
 	}
 	}); 
 };
+
+if($('.video-feedback__slider').length>0){
+	$('.video-feedback__slider').slick({
+	// autoplay: true,
+	infinite: false,
+	dots: true,
+	arrows: true,
+	// fade: true,
+	// cssEase: 'linear',
+	accessibility:false,
+	// centerMode: true,
+	slidesToShow: 2,
+	speed: 1000,
+	autoplaySpeed: 3000,
+	adaptiveHeight: true,
+	// appendArrows:$('.design__btns'),
+	nextArrow:'<button type="button" class="step-slider__next slick-next"></button>',
+	prevArrow:'<button type="button" class="step-slider__prev slick-prev"></button>',
+	responsive: [{
+		breakpoint: 820,
+		settings: {	slidesToShow: 1,
+	centerMode: true
+}
+		}]
+	}); 
+};
+
+
 
 //wow on
 // wow = new WOW({
