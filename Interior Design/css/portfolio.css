@@ -1,5 +1,5 @@
 .portfolio-header {
-  background: #000000 url("../img/portfolio/bg.png") center/cover no-repeat;
+  background: #000000 url("../img/Portfolio/bg.png") center/cover no-repeat;
 }
 
 .portfolio__header {
@@ -246,7 +246,7 @@
   }
 }
 
-.webp .portfolio-header { background: #000000 url(../img/portfolio/bg.webp) center/cover no-repeat; }
+.webp .portfolio-header { background: #000000 url(../img/Portfolio/bg.webp) center/cover no-repeat; }
 
 .webp .portfolio__section { background: #FCFCFC url(../img/Portfolio/bg-main.webp) bottom right/contain no-repeat; }
 
