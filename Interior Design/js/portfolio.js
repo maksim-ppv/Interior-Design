@@ -3001,7 +3001,7 @@ $('input.phone').focusout(function(event) {
 
 // tabs
 $(document).ready(function() {
-    $(".controls-price__panel").on('click', 'span', function() {
+    $(".controls-price__panel").on('click', '.controls-price__link', function() {
         $(".portfolio-content").removeClass("show_rel");
     
         var newImage = $(this).index();
@@ -3011,4 +3011,22 @@ $(document).ready(function() {
         $(".controls-price__link").removeClass("controls-price__link_active");
         $(this).addClass("controls-price__link_active");
       });
+});
+
+
+// scroll 
+
+$(()=>{
+    $('.up').on('click', (e)=>{
+      $('html,body').stop().animate({ scrollTop: $('#header').offset().top }, 1000);
+      e.preventDefault();
+    });   
+});
+$(document).ready(()=> {
+    $("a.arrow__link").click(function () {
+    var elementClick = $(this).attr("href")
+    var destination = $(elementClick).offset().top;
+    jQuery("html:not(:animated),body:not(:animated)").animate({scrollTop: destination}, 800);
+    return false;
+    });
 });

@@ -5253,7 +5253,7 @@ $(document).ready(function() {
       $(this).addClass("controls-steps-top__li_active");
     });
 
-    $(".controls-price__panel").on('click', 'span', function() {
+    $(".controls-price__panel").on('click', '.controls-price__link', function() {
         $(".price-content").removeClass("show_rel");
     
         var newImage = $(this).index();
@@ -5298,7 +5298,7 @@ ItemSelect.forEach(item=>{
             $(ItemSelectTitle).toggleClass('spoiler_active').next().slideToggle(300);
         })
     })
-})
+});
 
 
 //====================================================================================================================================

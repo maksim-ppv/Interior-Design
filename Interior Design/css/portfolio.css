@@ -85,8 +85,7 @@
   background: #FCFCFC url("../img/Portfolio/bg-main.png") bottom right/contain no-repeat;
 }
 
-.portfolio__section:after {
-  content: '';
+.arrow__up {
   display: block;
   bottom: 1%;
   right: 7%;
@@ -231,7 +230,7 @@
 }
 
 @media (max-width: 576.98px) {
-  .portfolio__section:after {
+  .arrow__up {
     bottom: 0%;
     left: 50%;
     -webkit-transform: translateX(-50%) rotate(180deg);
