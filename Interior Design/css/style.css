@@ -3386,17 +3386,6 @@ h6 {
 .certificate-design {
   background: #FCFCFC url("../img/slider-steps/slider-steps-bg.png") left top 200px/contain no-repeat;
   color: #373737;
-  position: relative;
-}
-
-.certificate-design:before {
-  content: '';
-  display: block;
-  padding: 10%;
-  right: 4%;
-  bottom: 4%;
-  position: absolute;
-  background: url("../img/certificate-design/design-decor.png") center/cover no-repeat;
 }
 
 .certificate__body {
@@ -3472,6 +3461,20 @@ h6 {
 
 .certificate__button {
   min-width: 264px;
+}
+
+.design {
+  position: relative;
+}
+
+.design:before {
+  content: '';
+  display: block;
+  padding: 10%;
+  right: 4%;
+  bottom: 4%;
+  position: absolute;
+  background: url("../img/certificate-design/design-decor.png") center/cover no-repeat;
 }
 
 .design__body {
@@ -4820,10 +4823,6 @@ h6 {
     display: none;
   }
 
-  .certificate-design:before {
-    bottom: 10%;
-  }
-
   .certificate__img {
     display: none;
   }
@@ -4842,6 +4841,10 @@ h6 {
 
   .certificate__button {
     margin: auto;
+  }
+
+  .design:before {
+    bottom: 10%;
   }
 
   .design__body {
@@ -5610,16 +5613,16 @@ h6 {
     padding: 20px 15px;
   }
 
-  .certificate-design:before {
-    display: none;
-  }
-
   .certificate__text {
     line-height: 16px;
   }
 
   .logo-certificate__text {
     line-height: 16px;
+  }
+
+  .design:before {
+    display: none;
   }
 
   .design__body {
@@ -5772,7 +5775,7 @@ h6 {
 
 .webp .certificate-design{ background: #FCFCFC url(../img/slider-steps/slider-steps-bg.webp) left top 200px/contain no-repeat; }
 
-.webp .certificate-design:before{ background: url(../img/certificate-design/design-decor.webp) center/cover no-repeat; }
+.webp .design:before{ background: url(../img/certificate-design/design-decor.webp) center/cover no-repeat; }
 
 .webp .video-inst{ background: #FCFCFC url(../img/slider-steps/slider-steps-bg.webp) left top 200px/contain no-repeat; }
 

@@ -3023,10 +3023,11 @@ $(()=>{
     });   
 });
 $(document).ready(()=> {
-    $("a.arrow__link").click(function () {
+    $("a.arrow__link").click(function (e) {
     var elementClick = $(this).attr("href")
     var destination = $(elementClick).offset().top;
     jQuery("html:not(:animated),body:not(:animated)").animate({scrollTop: destination}, 800);
+    e.preventDefault();
     return false;
     });
 });
