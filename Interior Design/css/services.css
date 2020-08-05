@@ -187,17 +187,6 @@
   .services-item__img {
     display: none;
   }
-}
-
-@media (max-width: 767.98px) {
-  .services__blocks {
-    margin-top: -90px;
-    margin-bottom: 60px;
-  }
-
-  .services-item__description {
-    line-height: 18px;
-  }
 
   .bottom__block {
     -ms-flex-wrap: wrap;
@@ -210,6 +199,17 @@
     -webkit-box-flex: 0;
         -ms-flex: 0 1 44%;
             flex: 0 1 44%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .services__blocks {
+    margin-top: -90px;
+    margin-bottom: 60px;
+  }
+
+  .services-item__description {
+    line-height: 18px;
   }
 
   .services__also {
