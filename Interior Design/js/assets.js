@@ -721,7 +721,7 @@ if($('.design__items').length>0){
     const DesignNumbersFirst = document.querySelector('.design__numbers-first');
     const DesignNumbersTwo = document.querySelector('.design__numbers-two');
     const designNumber = document.querySelectorAll('.design__number');
-    const designNumberSpan = document.querySelectorAll('.design__number span');
+    const designNumberSpan = document.querySelectorAll('.design__number_span');
     const DesignNumbersTwoSpan = document.querySelector('.design__numbers-two span');
     if($('.design__item').length >= 10){
         DesignNumbersTwo.textContent = $('.design__item').length;
@@ -734,20 +734,18 @@ if($('.design__items').length>0){
         var ChangeItem = $('.design__items .slick-active').index();
         console.log('newItem: ', newItem);
         DesignNumbersFirst.textContent = ++ChangeItem;
-        if($('.design__item').length >= 4){
-            designNumber.forEach((item, i)=>{
-                if(i == newItem){
-                    item.textContent = ChangeItem;
-                    console.log('newItem++: ', newItem);
-                }
-            })
-        } else {
-            designNumberSpan.forEach((item, i)=>{
-                if(i == newItem){
-                    item.textContent = ChangeItem;
-                    console.log('newItem++2: ', newItem);
-                }
-        })
-    }
-    }); 
+        designNumberSpan.forEach((item, i)=>{
+			if(i == newItem && i < 10){
+				item.textContent = ChangeItem;
+			}
+			if(i == newItem && i >= 10){
+				designNumber.forEach((itemNumber, index)=>{
+					if(index == newItem){
+						itemNumber.textContent = ChangeItem;
+					}
+				})
+			}
+	})
+
+}); 
 };

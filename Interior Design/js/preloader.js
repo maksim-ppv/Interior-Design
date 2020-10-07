@@ -1,5 +1,4 @@
 window.onload = function() {
-    console.log("djnnfr fuck");
     setTimeout(function(){
         let preloader = document.getElementById('cube-loader');
         
