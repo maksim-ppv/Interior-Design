@@ -1,7 +1,7 @@
 
 const btn = document.querySelector('.menu-button');
 const menu = document.querySelector('.mobile__navbar');
-const menuHeaderName = document.querySelector('.menu-header__name');
+const menuHeaderName = document.querySelector('.menu-block');
 
 
 
@@ -18,7 +18,7 @@ menu.addEventListener('click', event => {
       modal();
    }
 });
-btn.addEventListener('click', modal);
+
 ;
 /*!
  * jquery.inputmask.bundle.js
@@ -7257,7 +7257,38 @@ $('input.phone').focusout(function(event) {
 
 
 
-
+if($('.sticky-button').length>0){
+	const stickyButton = document.querySelectorAll('.sticky-button');
+	const stickyButtonOver = document.querySelectorAll('.sticky-button__text');
+	const stickyButtonBlock = document.querySelectorAll('.sticky-button__block');
+	
+	stickyButton.forEach(item=>{
+		item.addEventListener('mouseover',()=>{
+			const stickyButtonText = item.querySelector('.sticky-button__text');
+			stickyButtonText.classList.add('sticky-button__text_active')
+			stickyButton.forEach(item=>{
+				item.classList.add('sticky-button_active')
+			})
+		})
+	});
+	stickyButton.forEach(item=>{
+		item.addEventListener('mouseout',()=>{
+			const stickyButtonText = item.querySelector('.sticky-button__text');
+			stickyButtonText.classList.remove('sticky-button__text_active')
+			stickyButton.forEach(item=>{
+				item.classList.remove('sticky-button_active')
+			})		})
+	});
+	stickyButtonOver.forEach(item=>{
+		item.addEventListener('mouseout',()=>{
+			console.log("работает");
+			item.classList.remove('sticky-button__text_active')
+			stickyButton.forEach(item=>{
+				item.classList.remove('sticky-button_active')
+			})
+		})
+	}) 
+};
 
 
 //SLIDERS

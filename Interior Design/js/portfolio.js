@@ -1,6 +1,6 @@
 const btn = document.querySelector('.menu-button');
 const menu = document.querySelector('.mobile__navbar');
-const menuHeaderName = document.querySelector('.menu-header__name');
+const menuHeaderName = document.querySelector('.menu-block');
 
 
 
@@ -17,7 +17,7 @@ menu.addEventListener('click', event => {
       modal();
    }
 });
-btn.addEventListener('click', modal);
+
 ;
 
 /*!
