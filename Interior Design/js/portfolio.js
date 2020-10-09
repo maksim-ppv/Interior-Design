@@ -1,6 +1,8 @@
 const btn = document.querySelector('.menu-button');
 const menu = document.querySelector('.mobile__navbar');
 const menuHeaderName = document.querySelector('.menu-block');
+const topHeaderContactsMenu = document.querySelector('.top-header__contacts-menu');
+const topHeader = document.querySelector('.top-header');
 
 
 
@@ -8,6 +10,9 @@ const modal = ()=>{
    menu.classList.toggle('hide');
    menu.classList.toggle('show');
    btn.classList.toggle('line_active');
+   topHeaderContactsMenu.classList.toggle('display_none');
+   topHeader.classList.toggle('top-header_active-menu');
+   
 }
 
 menuHeaderName.addEventListener('click', modal);

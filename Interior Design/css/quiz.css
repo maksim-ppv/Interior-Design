@@ -580,6 +580,9 @@ h6 {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  -webkit-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  transition: 0.3s all;
 }
 
 .top-header__logo {
@@ -846,9 +849,6 @@ h6 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
 }
 
 .bottom-header__item {
@@ -865,7 +865,7 @@ h6 {
 
 .bottom-header__title {
   font-weight: 500;
-  font-size: 18px;
+  font-size: calc(16px + 2 * ((100vw - 320px) / 1600));
   line-height: 120%;
   display: block;
   padding-bottom: 10px;
@@ -873,7 +873,7 @@ h6 {
 
 .bottom-header__text {
   font-weight: 300;
-  font-size: 16px;
+  font-size: calc(14px + 2 * ((100vw - 320px) / 1600));
   line-height: 120%;
   display: block;
 }
@@ -2771,6 +2771,12 @@ h6 {
   }
 }
 
+@media (max-width: 1620px) {
+  .container {
+    max-width: 1300px;
+  }
+}
+
 @media (max-width: 1600px) {
   .content-steps-bottom__description {
     padding-bottom: 250px;
@@ -2778,10 +2784,6 @@ h6 {
 }
 
 @media (max-width: 1500px) {
-  .container {
-    max-width: 1140px;
-  }
-
   .steps-bottom__body {
     padding-left: 0;
   }
@@ -2802,6 +2804,12 @@ h6 {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+}
+
+@media (max-width: 1450px) {
+  .container {
+    max-width: 1070px;
   }
 }
 
@@ -2858,6 +2866,10 @@ h6 {
 }
 
 @media (max-width: 1199px) {
+  .container {
+    max-width: 900px;
+  }
+
   .main-content-steps-top__body {
     left: 50%;
     -webkit-transform: translateX(-50%);
@@ -2895,10 +2907,6 @@ h6 {
 }
 
 @media (max-width: 1170px) {
-  .container {
-    max-width: 960px;
-  }
-
   .present-item-right {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 350px;
@@ -2926,12 +2934,6 @@ h6 {
   }
 }
 
-@media (max-width: 1140px) and (min-height: 1240px) {
-  .header__content {
-    padding-top: 15%;
-  }
-}
-
 @media (max-width: 991px) {
   .container {
     max-width: 750px;
@@ -2947,8 +2949,20 @@ h6 {
     line-height: 24px;
   }
 
+  .header__top .top-header__name {
+    display: none;
+  }
+
   .content-header__title {
     padding-bottom: 30px;
+  }
+
+  .bottom-header {
+    display: -webkit-box;
+  }
+
+  .bottom-header__item {
+    max-width: 380px;
   }
 
   .controls-steps-top__name {
@@ -3041,6 +3055,22 @@ h6 {
   }
 }
 
+@media (max-width: 850px) {
+  .top-header_active-menu {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    background: transparent;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    transition: 0.5s all;
+  }
+
+  .top-header_active-menu .top-header__logo {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     min-width: 100%;
@@ -3054,7 +3084,35 @@ h6 {
     padding-bottom: 25px;
   }
 
-  .top-header__name {
+  .header__body_active {
+    margin-top: 56px;
+  }
+
+  .top-header_active {
+    position: fixed;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    transition: 0.5s all;
+    background: #030303;
+    -webkit-box-shadow: 0px 4px 10px rgba(35, 35, 35, 0.12);
+            box-shadow: 0px 4px 10px rgba(35, 35, 35, 0.12);
+    top: 0;
+    z-index: 10;
+    height: 70px;
+    width: 100%;
+  }
+
+  .top-header_active-menu {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    background: transparent;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    transition: 0.5s all;
+  }
+
+  .header__top .top-header__logo_active {
     display: none;
   }
 
@@ -3065,6 +3123,7 @@ h6 {
   .header__content {
     -ms-flex-pack: distribute;
         justify-content: space-around;
+    padding-top: 7%;
   }
 
   .content-header__title {
@@ -3101,6 +3160,16 @@ h6 {
 
   .item-header__text {
     line-height: 100%;
+  }
+
+  .bottom-header {
+    display: block;
+  }
+
+  .bottom-header__item {
+    border-right: none;
+    padding-bottom: 20px;
+    max-width: 100%;
   }
 
   .steps-top__subtitle {
@@ -3205,8 +3274,25 @@ h6 {
     padding-bottom: 30px;
   }
 
+  .contacts-header {
+    text-align: right;
+  }
+
+  .contacts-header__time {
+    display: none;
+  }
+
+  .contacts-header__phone {
+    padding-bottom: 5px;
+  }
+
+  .contacts-header__call a {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
   .menu-header {
-    padding-left: 15px;
+    padding-left: 0px;
   }
 
   .content-header__title {
