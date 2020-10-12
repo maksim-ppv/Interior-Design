@@ -5408,12 +5408,12 @@ if(n.val()==""){
 
 $(".design-column__name").on('click', '.design-title', function() {
     $(".img-design").removeClass("show");
-    $(".design-column__content-body").removeClass("show");
+    $(".design-column__content-body").removeClass("show_rel");
 
     var newImage = $(this).index();
 
     $(".img-design").eq(newImage).addClass("show");
-    $(".design-column__content-body").eq(newImage).addClass("show");
+    $(".design-column__content-body").eq(newImage).addClass("show_rel");
 
     $(".design-title").removeClass("design-title_active");
     $(this).addClass("design-title_active");
@@ -5484,20 +5484,6 @@ ItemSelect.forEach(item=>{
     })
 });
 
-
-//====================================================================================================================================
-
-const stepsMiddleInfo1 = document.querySelector('.steps-middle__info-1');
-const stepsMiddleInfo2 = document.querySelector('.steps-middle__info-2');
-
-const open = () => {
-    stepsMiddleInfo2.classList.add('show');
-}
-const Close = () => {
-    stepsMiddleInfo2.classList.remove('show');
-}
-stepsMiddleInfo1.addEventListener('mouseout', Close);
-stepsMiddleInfo1.addEventListener('mouseover', open);
 
 //====================================================================================================================================
 
