@@ -2536,26 +2536,26 @@ h6 {
 .show {
   opacity: 1;
   visibility: visible;
-  -webkit-transition: 1s;
-  -o-transition: 1s;
-  transition: 1s;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .hide_abs {
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: 1s;
-  -o-transition: 1s;
-  transition: 1s;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
   position: absolute;
 }
 
 .show_rel {
   opacity: 1;
   visibility: visible;
-  -webkit-transition: 1s;
-  -o-transition: 1s;
-  transition: 1s;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
   position: relative;
 }
 

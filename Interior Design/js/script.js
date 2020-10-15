@@ -5425,11 +5425,11 @@ $(".design-column__name").on('click', '.design-title', function() {
 // tabs
 $(document).ready(function() {
     $(".controls-steps-top__ul").on('click', 'li', function() {
-      $(".main-content-steps-top__bg").removeClass("show");
+      $(".main-content-steps-top__bg").removeClass("show_rel");
   
       var newImage = $(this).index();
   
-      $(".main-content-steps-top__bg").eq(newImage).addClass("show");
+      $(".main-content-steps-top__bg").eq(newImage).addClass("show_rel");
   
       $(".controls-steps-top__li").removeClass("controls-steps-top__li_active");
       $(this).addClass("controls-steps-top__li_active");
