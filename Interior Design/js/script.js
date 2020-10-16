@@ -5488,11 +5488,9 @@ ItemSelect.forEach(item=>{
             $(ItemSelectTitle).toggleClass('spoiler_active').next().slideToggle(300);
             if( item.classList.contains('kviz-3__select')){
                 $(".kviz-3__img").removeClass("show_rel");
-                $(".kviz-3__ul").removeClass("show_rel");
-
-                console.log(index);
+                $(".kviz-3__block").removeClass("show_rel");
                 $(".kviz-3__img").eq(index).addClass("show_rel");
-                $(".kviz-3__ul").eq(index).addClass("show_rel");
+                $(".kviz-3__block").eq(index).addClass("show_rel");
 
             }
             // ItemSelectInput.value = itemSelect.textContent;
@@ -8331,6 +8329,14 @@ function ibg(){
 if(window.matchMedia('(min-width: 576px)').matches){
 	var Scrollbar = window.Scrollbar;
 	const scrollbar = document.querySelectorAll('.my-scrollbar2');
+	scrollbar.forEach(item=>{
+		Scrollbar.init(item, {
+			alwaysShowTracks:true});
+	});
+}
+if(window.matchMedia('(max-width: 576px)').matches){
+	var Scrollbar = window.Scrollbar;
+	const scrollbar = document.querySelectorAll('.my-scrollbar3');
 	scrollbar.forEach(item=>{
 		Scrollbar.init(item, {
 			alwaysShowTracks:true});
