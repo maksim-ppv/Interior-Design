@@ -5409,11 +5409,18 @@ if(n.val()==""){
 $(".design-column__name").on('click', '.design-title', function() {
     $(".img-design").removeClass("show");
     $(".design-column__content-body").removeClass("show_rel");
+    $(".no-design__block-imgs").removeClass("show");
 
     var newImage = $(this).index();
-
+    if( newImage == 0){
+        $(".img-column").addClass("img-index");
+    };
+    if( newImage == 1){
+        $(".img-column").removeClass("img-index");
+    }
     $(".img-design").eq(newImage).addClass("show");
     $(".design-column__content-body").eq(newImage).addClass("show_rel");
+    $(".no-design__block-imgs").eq(newImage).addClass("show");
 
     $(".design-title").removeClass("design-title_active");
     $(this).addClass("design-title_active");
@@ -5473,13 +5480,22 @@ const ItemSelect = document.querySelectorAll('.content-present-item-4__select');
 
 ItemSelect.forEach(item=>{
     const ItemSelectTitle = item.querySelector('.content-present-item-4__select-title');
-    const ItemSelectInput = item.querySelector('input');
+    // const ItemSelectInput = item.querySelector('input');
     const selectItem = item.querySelectorAll('.select-item');
-    selectItem.forEach(itemSelect=>{
+    selectItem.forEach((itemSelect, index)=>{
         itemSelect.addEventListener('click',()=>{
             ItemSelectTitle.textContent = itemSelect.textContent;
-            ItemSelectInput.value = itemSelect.textContent;
             $(ItemSelectTitle).toggleClass('spoiler_active').next().slideToggle(300);
+            if( item.classList.contains('kviz-3__select')){
+                $(".kviz-3__img").removeClass("show_rel");
+                $(".kviz-3__ul").removeClass("show_rel");
+
+                console.log(index);
+                $(".kviz-3__img").eq(index).addClass("show_rel");
+                $(".kviz-3__ul").eq(index).addClass("show_rel");
+
+            }
+            // ItemSelectInput.value = itemSelect.textContent;
         })
     })
 });
@@ -8312,7 +8328,14 @@ function ibg(){
 
 
 // Scrollsmooth
-
+if(window.matchMedia('(min-width: 576px)').matches){
+	var Scrollbar = window.Scrollbar;
+	const scrollbar = document.querySelectorAll('.my-scrollbar2');
+	scrollbar.forEach(item=>{
+		Scrollbar.init(item, {
+			alwaysShowTracks:true});
+	});
+}
 var Scrollbar = window.Scrollbar;
 	const scrollbar = document.querySelectorAll('.my-scrollbar');
 	scrollbar.forEach(item=>{
