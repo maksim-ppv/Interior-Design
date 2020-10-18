@@ -5573,7 +5573,6 @@ PresentButtonPrev.addEventListener('click', ()=>{
 
 PresentButtonNext.addEventListener('click', ()=>{
     if(lock == true){
-        console.log('lock: ', lock);
     if(MaxNumber > number){
             number++;
             lock = false
@@ -8114,7 +8113,6 @@ $('input.phone').focusout(function(event) {
 if($('.sticky-button').length>0){
 	const stickyButton = document.querySelectorAll('.sticky-button');
 	const stickyButtonOver = document.querySelectorAll('.sticky-button__text');
-	const stickyButtonBlock = document.querySelectorAll('.sticky-button__block');
 	
 	stickyButton.forEach(item=>{
 		item.addEventListener('mouseover',()=>{
@@ -8187,32 +8185,40 @@ if($('.step-slider__items').length>0){
 };
 
 if($('.feedback-slider__items').length>0){
+	$('.feedback-slider__texts').slick({
+		// autoplay: true,
+		// infinite: false,
+		dots: true,
+		arrows: true,
+		fade: true,
+		cssEase: 'linear',
+		accessibility:false,
+		slidesToShow:1,
+		asNavFor:".feedback-slider__items",
+		speed: 1000,
+		autoplaySpeed: 3000,
+		adaptiveHeight: true,
+		appendArrows:$('.feedback-slider__btns'),
+		appendDots:$('.feedback-slider__btns'),
+		nextArrow:'<button type="button" class="step-slider__next feedback-slider__next"></button>',
+		prevArrow:'<button type="button" class="step-slider__prev feedback-slider__prev"></button>',
+	
+	});
 	$('.feedback-slider__items').slick({
 	// autoplay: true,
 	// infinite: false,
 	dots: false,
-	arrows: true,
+	arrows: false,
 	fade: true,
 	cssEase: 'linear',
 	accessibility:false,
 	slidesToShow:1,
 	speed: 1000,
+	asNavFor:".feedback-slider__texts",
 	autoplaySpeed: 3000,
 	adaptiveHeight: true,
-	appendArrows:$('.feedback-slider__btns'),
-	nextArrow:'<button type="button" class="step-slider__next"></button>',
-	prevArrow:'<button type="button" class="step-slider__prev"></button>',
-
 	});
-	const feedbackNumbersFirst = document.querySelector('.feedback-slider__numbers-first');
-	const feedbackNumbersTwo = document.querySelector('.feedback-slider__numbers-two');
-	feedbackNumbersTwo.textContent = $('.feedback-slider__item').length;
 
-	$('.feedback-slider__btns .slick-arrow').click(function() {
-		var newItem = $('.feedback-slider__items .slick-active').index();
-		console.log('newItem: ', newItem);
-		feedbackNumbersFirst.textContent = ++newItem;
-	  }); 
 };
 
 
@@ -8291,23 +8297,6 @@ if($('.video-feedback__slider').length>0){
 	}); 
 };
 
-
-
-//wow on
-// wow = new WOW({
-// 	mobile: false,
-// 	offset: 80
-  
-//   })
-// wow.init();
-
-// parallax
-var scene = document.querySelectorAll('.parallax');
-	scene.forEach(item=>{
-		const picture = item.querySelector('picture');
-		picture.classList.toggle('parallax');
-		var parallaxInstance = new Parallax(picture);
-	})
 
 
 // //ibg
