@@ -8216,7 +8216,8 @@ if($('.feedback-slider__items').length>0){
 	speed: 1000,
 	asNavFor:".feedback-slider__texts",
 	autoplaySpeed: 3000,
-	adaptiveHeight: true,
+	centerMode: true,
+	// adaptiveHeight: true,
 	});
 
 };
@@ -8226,7 +8227,7 @@ if($('.design__items').length>0){
 	$('.design__items').slick({
 	// autoplay: true,
 	// infinite: false,
-	dots: false,
+	dots: true,
 	arrows: true,
 	fade: true,
 	cssEase: 'linear',
@@ -8235,40 +8236,12 @@ if($('.design__items').length>0){
 	speed: 1000,
 	autoplaySpeed: 3000,
 	adaptiveHeight: true,
+	appendDots:$('.design__btns'),
 	appendArrows:$('.design__btns'),
-	nextArrow:'<button type="button" class="step-slider__next"></button>',
-	prevArrow:'<button type="button" class="step-slider__prev"></button>',
+	nextArrow:'<button type="button" class="step-slider__next design-slider__next"></button>',
+	prevArrow:'<button type="button" class="step-slider__prev design-slider__prev"></button>',
 
-	});
-	const DesignNumbersFirst = document.querySelector('.design__numbers-first');
-	const DesignNumbersTwo = document.querySelector('.design__numbers-two');
-	const designNumber = document.querySelectorAll('.design__number');
-	const designNumberSpan = document.querySelectorAll('.design__number_span');
-	const DesignNumbersTwoSpan = document.querySelector('.design__numbers-two span');
-	if($('.design__item').length >= 10){
-		DesignNumbersTwo.textContent = $('.design__item').length;
-	} else {
-		DesignNumbersTwoSpan.textContent = $('.design__item').length;
-	}
-
-	$('.design__btns .slick-arrow').click(function() {
-		var newItem = $('.design__items .slick-active').index();
-		var ChangeItem = $('.design__items .slick-active').index();
-		DesignNumbersFirst.textContent = ++ChangeItem;
-        designNumberSpan.forEach((item, i)=>{
-			if(i == newItem && i < 10){
-				item.textContent = ChangeItem;
-			}
-			if(i == newItem && i >= 10){
-				designNumber.forEach((itemNumber, index)=>{
-					if(index == newItem){
-						itemNumber.textContent = ChangeItem;
-					}
-				})
-			}
-	})
-
-}); 
+	}); 
 };
 
 if($('.video-feedback__slider').length>0){
@@ -8285,9 +8258,10 @@ if($('.video-feedback__slider').length>0){
 	speed: 1000,
 	autoplaySpeed: 3000,
 	adaptiveHeight: true,
-	// appendArrows:$('.design__btns'),
-	nextArrow:'<button type="button" class="step-slider__next slick-next"></button>',
-	prevArrow:'<button type="button" class="step-slider__prev slick-prev"></button>',
+	appendDots:$('.video__btns'),
+	appendArrows:$('.video__btns'),
+	nextArrow:'<button type="button" class="video-slider__next step-slider__next slick-next"></button>',
+	prevArrow:'<button type="button" class="video-slider__prev step-slider__prev slick-prev"></button>',
 	responsive: [{
 		breakpoint: 820,
 		settings: {	slidesToShow: 1,
