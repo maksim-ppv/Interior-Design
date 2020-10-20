@@ -5321,7 +5321,7 @@ function showMessageByClass(ms, nums){
         );
 	};
 		
-
+	popupThanks(ms)
 }
 
 
@@ -7306,36 +7306,35 @@ PresentButtonNext.addEventListener('click', ()=>{
   
     return Instafeed;
   }));;
-// // ymaps.ready(init);
+ymaps.ready(init);
  
-// function init() {
+function init() {
 
-//     var myMap = new ymaps.Map("map", {
-//         center: [53.89284669209618,27.493862237434385],
-//         zoom: 16,
-//         controls: [
-//             'zoomControl'
-//         ]
-//     });
+    var myMap = new ymaps.Map("map", {
+        center: [53.89284669209618,27.493862237434385],
+        zoom: 16,
+        controls: [
+            'zoomControl'
+        ]
+    });
 
 
-//     var placemark = new ymaps.Placemark(myMap.getCenter(), {
-//         balloonContentBody: '<span class="map__baloon">г.Минск, ул. Пономаренко, 35а</span><span class="map__baloon-2">(офис 418)</span>'
-//     }, {
-//         iconLayout: 'default#image',
-//         iconImageHref: './img/footer/metka.png',
-//         // Размеры метки.
-//         iconImageSize: [50, 76],
-//         // Смещение левого верхнего угла иконки относительно
-//         // её "ножки" (точки привязки).
-//         iconImageOffset: [-25, -76],
-//         balloonCloseButton: false,
-//         hideIconOnBalloonOpen: false
-//     });
-//     myMap.geoObjects.add(placemark);
-//     placemark.balloon.open();
+    var placemark = new ymaps.Placemark(myMap.getCenter(), {
+        balloonContentBody: ''
+    },{
+        iconLayout: 'default#image',
+        iconImageHref: './img/icon/map.svg',
+        // Размеры метки.
+        iconImageSize: [50, 76],
+        // Смещение левого верхнего угла иконки относительно
+        // её "ножки" (точки привязки).
+        iconImageOffset: [-25, -76],
+        balloonCloseButton: false,
+        hideIconOnBalloonOpen: false
+    });
+    myMap.geoObjects.add(placemark);
 
-// };;
+};;
 (function($){
 
   $.fn.twentytwenty = function(options) {
@@ -8316,12 +8315,19 @@ var Scrollbar = window.Scrollbar;
 	});
 
 // instargam 
-var feed = new Instafeed({
-	accessToken: InstagramToken,
-	limit: 10
-});
+if(window.matchMedia('(min-width: 576px)').matches){
+	var feed = new Instafeed({
+		accessToken: InstagramToken,
+		limit: 10
+	});
+}
+if(window.matchMedia('(max-width: 576px)').matches){
+	var feed = new Instafeed({
+		accessToken: InstagramToken,
+		limit: 4
+	});
+}
 feed.run();
-
 
 // scroll 
 

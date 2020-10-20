@@ -3278,7 +3278,7 @@ function showMessageByClass(ms, nums){
         );
 	};
 		
-
+	popupThanks(ms)
 }
 
 
