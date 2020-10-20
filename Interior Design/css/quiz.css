@@ -1272,7 +1272,7 @@ h6 {
 }
 
 .bg-steps-2 {
-  background: url("../img/steps/cover2.jpg") bottom/contain no-repeat;
+  background: url("../img/steps/cover3.jpg") bottom/contain no-repeat;
 }
 
 .bg-steps-3 {
@@ -3774,7 +3774,7 @@ h6 {
             flex: 0 1 100%;
   }
 
-  .scroll-content {
+  .content-present-item-4__select-items .scroll-content {
     height: 200px;
   }
 
@@ -3889,7 +3889,7 @@ h6 {
 
 .webp .bg-steps-1{ background: url(../img/steps/cover1.webp) bottom/contain no-repeat; }
 
-.webp .bg-steps-2{ background: url(../img/steps/cover2.webp) bottom/contain no-repeat; }
+.webp .bg-steps-2{ background: url(../img/steps/cover3.webp) bottom/contain no-repeat; }
 
 .webp .bg-steps-3{ background: url(../img/steps/cover3.webp) bottom/contain no-repeat; }
 

@@ -8229,7 +8229,7 @@ if($('.design__items').length>0){
 	// infinite: false,
 	dots: true,
 	arrows: true,
-	fade: true,
+	// fade: true,
 	cssEase: 'linear',
 	accessibility:false,
 	slidesToShow:1,
@@ -8250,24 +8250,27 @@ if($('.video-feedback__slider').length>0){
 	infinite: false,
 	dots: true,
 	arrows: true,
-	// fade: true,
+	fade: true,
 	// cssEase: 'linear',
 	accessibility:false,
 	// centerMode: true,
-	slidesToShow: 2,
+	slidesToShow: 1,
 	speed: 1000,
 	autoplaySpeed: 3000,
 	adaptiveHeight: true,
+	// variableWidth: true,
 	appendDots:$('.video__btns'),
 	appendArrows:$('.video__btns'),
 	nextArrow:'<button type="button" class="video-slider__next step-slider__next slick-next"></button>',
 	prevArrow:'<button type="button" class="video-slider__prev step-slider__prev slick-prev"></button>',
 	responsive: [{
 		breakpoint: 820,
-		settings: {	slidesToShow: 1,
-	centerMode: true
-}
-		}]
+		settings: {	
+			slidesToShow: 2,
+			fade: false
+		}
+		}],
+	mobileFirst: true,
 	}); 
 };
 
